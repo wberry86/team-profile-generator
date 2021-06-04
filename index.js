@@ -7,8 +7,10 @@ const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 
+//import js templates
+
 const teamMembers = [];
-const idArray = [];
+
 
 let manager;
 
@@ -52,9 +54,9 @@ function managerPrompt() {
       );
 
       teamMembers.push(manager);
-      idArray.push(answers.id);
+      
 
-      console.info("Answer:", answers);
+      //console.info("Answer:", answers);
       console.log("continue to questions");
 
       otherPrompt();
@@ -112,6 +114,7 @@ function otherPrompt() {
     ])
     .then((otherAnswers) => {
       if (otherAnswers.employeeRole === "Intern") {
+
         let employee = new Intern(
           otherAnswers.employeeName,
           otherAnswers.employeeId,
@@ -119,28 +122,68 @@ function otherPrompt() {
           otherAnswers.school
         );
         teamMembers.push(employee);
-        idArray.push(otherAnswers.id);
+        
       } else if (otherAnswers.employeeRole === "Engineer") {
+
         let employee = new Engineer(
           otherAnswers.employeeName,
           otherAnswers.employeeId,
           otherAnswers.employeeEmail,
-          otherAnswers.school
+          otherAnswers.github
         );
+
         teamMembers.push(employee);
-        idArray.push(otherAnswers.id);
+        
+
       }
       if (otherAnswers.newEmployee === true) {
+
         otherPrompt();
       } else {
-        createTeam();
+        console.log(teamMembers);
+        //createTeam();
       }
     });
 }
 
+
+
+
+
 function createTeam() {
+  
+  // loop through team members array
+  for (i = 0; i < teamMembers.length; i++) {
+    var currentMember = teamMembers[i];
+
+    if (currentMember.getRole() === "Manager") {
+      console.log(currentMember);
+      createManager();
+    } else if 
+      (currentMember.getRole() === "Intern") {
+        createIntern();
+      } else {
+          createEngineer();
+        }
+      }
     
-}
+  
+     fs.writeFile("cards.html", teamMembers, function(err) {
+      
+      if (err) {
+        return console.log(err);
+      }
+    
+      console.log("Done!");
+    
+    });
+  };
+
+
+
+
+    
+
 
 managerPrompt();
 
