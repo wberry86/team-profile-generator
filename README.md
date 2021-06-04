@@ -20,9 +20,9 @@
   GNU-General-Public
   
   ## Contributing:
-  undefined
+  n/a
   ## Tests:
-  undefined
+  n/a
   ## Questions:
   Below are links to my Github page and email in case you would like to contact me or have any further questions.
 
