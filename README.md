@@ -28,3 +28,7 @@
 
   - Github: [wberry86](https://github.com/wberry86)
   - Email: wberry86@gmail.com
+
+## Screenshot 
+
+ ![team generator screenshot](https://github.com/wberry86/team-profile-generator/blob/main/images/teamgeneratorcapture.PNG)
